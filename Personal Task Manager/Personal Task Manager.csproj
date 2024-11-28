@@ -20,6 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DataModel\DataModel.csproj" />
+    <ProjectReference Include="..\TaskService\TaskService.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\iconsfilter.png" />
     <Resource Include="Resources\iconsin-progress.png" />
     <Resource Include="Resources\iconsmanage.png" />

@@ -1,18 +1,13 @@
 ﻿using DataModel.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace TaskService.TaskService
+namespace Service.TaskService
 {
     public class TaskService
     {
         //private string FilePath = @"./Database/DBTask.csv";
-        private ObservableCollection<TaskItem> _taskItems = new ObservableCollection<TaskItem>();
+        public ObservableCollection<TaskItem> _taskItems = new ObservableCollection<TaskItem>();
         public TaskService()
         {
             ReadTasks();
@@ -20,33 +15,33 @@ namespace TaskService.TaskService
         private void ReadTasks()
         {
             Category daily = new Category(1,"Chores");
-            Category health = new Category(1, "Chores");
+            Category health = new Category(1, "Health");
 
             TaskItem taskItem1 = new TaskItem()
             {
                 Id = IdGenerator(),
                 Title = "Homework.",
                 Description = "Math Homework should be completed by tomorrow!",
-                Category = daily,
+                Category = daily.TaskType,
                 DueDate = DateTime.Now,
                 IsCompleted = false,
                 Priority = "Medium"
             };
+            _taskItems.Add(taskItem1);
             TaskItem taskItem2 = new TaskItem()
             {
                 Id = IdGenerator(),
                 Title = "Visit Doctor.",
                 Description = "You have an appointment with the tooth doctor!",
-                Category = health,
+                Category = health.TaskType,
                 DueDate = DateTime.Now,
                 IsCompleted = false,
                 Priority = "High"
             };
-            _taskItems.Add(taskItem1);
             _taskItems.Add(taskItem2);
         }
 
-        public TaskItem DeleteTask(int id)
+          public TaskItem DeleteTask(int id)
         {
             TaskItem? taskItem = _taskItems.FirstOrDefault(x=> x?.Id == id,null);
             if (taskItem == null)
@@ -74,7 +69,7 @@ namespace TaskService.TaskService
         }
         private int IdGenerator()
         {
-            int generatedId = _taskItems.Count > 0 ? _taskItems.Max(x => x.Id) : 1;
+            int generatedId = _taskItems.Any() ? _taskItems.Max(x => x.Id) + 1 : 1;
             return generatedId;
         }
        

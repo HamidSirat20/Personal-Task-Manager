@@ -1,13 +1,8 @@
-﻿using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using DataModel.Models;
+using Service.TaskService;
 
 namespace Personal_Task_Manager
 {
@@ -16,9 +11,37 @@ namespace Personal_Task_Manager
     /// </summary>
     public partial class MainWindow : Window
     {
+        TaskService taskService = new TaskService();
+        ObservableCollection<TaskItem> tasks = new ObservableCollection<TaskItem>();
+        public TaskItem CurrentTask { get; set; } = new TaskItem();
+
         public MainWindow()
         {
             InitializeComponent();
+            FillData();
+            TasksGrid.ItemsSource = tasks;
         }
+
+        private void TasksGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (TasksGrid.SelectedIndex >= 0)
+            {
+                CurrentTask = TasksGrid.SelectedItem as TaskItem;
+                TaskLabel.Content = CurrentTask.TaskDescription();
+            }
+
+        }
+     
+        private void FillData()
+        {
+            tasks = taskService._taskItems;
+        }
+        private void btnHome_Click(object sender, RoutedEventArgs e)
+        {
+            TasksPanel.Visibility = Visibility.Visible;
+       
+        }
+
+      
     }
 }

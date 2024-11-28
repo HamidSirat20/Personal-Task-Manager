@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="TaskService\Database\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\DataModel\DataModel.csproj" />
   </ItemGroup>
 
