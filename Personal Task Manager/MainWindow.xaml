@@ -7,6 +7,102 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <!--Title-->
+        <Label Grid.Row="0" FontSize="18" Margin="20,3" FontWeight="Heavy" Foreground="#333333" >Personal Task Manager</Label>
+
+        <!-- Top Action Buttons -->
+        <DockPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0" Grid.Row="1">
+            <TextBlock Text="Actions:" FontSize="16" FontWeight="Bold" Foreground="#555" Margin="10,10,37,10" />
+            <Button Height="40" Width="150"  Background="WhiteSmoke" Foreground="Black"
+                    Margin="5" FontSize="14" Padding="5" FontWeight="Bold" 
+                    BorderBrush="#FFA500" BorderThickness="1" >
+                <Button.ToolTip>Add a new task to your list</Button.ToolTip>
+                <Button.Content>
+                    <DockPanel>
+                        <Image Source=".\Resources\iconsadd-32.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                        <TextBlock VerticalAlignment="Center">Add Task</TextBlock>
+                    </DockPanel>
+                </Button.Content>
+            </Button>
+            <Button  Height="40" Width="180"  Background="WhiteSmoke" Foreground="Black"
+                    Margin="5" FontSize="14" Padding="5" FontWeight="Bold" 
+                    BorderBrush="#FFA500" BorderThickness="1">
+                <Button.ToolTip>Organize and manage task categories</Button.ToolTip>
+                <Button.Content>
+                    <DockPanel>
+                        <Image Source=".\Resources\iconsmanage.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                        <TextBlock VerticalAlignment="Center">Manage Categories</TextBlock>
+                    </DockPanel>
+                </Button.Content>
+            </Button>
+            <Button  Height="40" Width="150"   Background="WhiteSmoke" Foreground="Black"
+                    Margin="5" FontSize="14" Padding="5" FontWeight="Bold" 
+                    BorderBrush="#FFA500" BorderThickness="1">
+                <Button.ToolTip>Filter tasks by status or category</Button.ToolTip>
+                <Button.Content>
+                    <DockPanel>
+                        <Image Source=".\Resources\iconsfilter.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                        <TextBlock VerticalAlignment="Center">Filter Tasks</TextBlock>
+                    </DockPanel>
+                </Button.Content>
+            </Button>
+        </DockPanel>
+
+        <!-- Status Buttons -->
+        <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,2" Grid.Row="2">
+            <TextBlock Text="Task Status:" FontSize="16" FontWeight="Bold" Foreground="#555" Margin="10,10" />
+            <Button  Height="35" Width="150"  Background="#FF6347" Foreground="White" 
+                    Margin="5" FontWeight="Bold" BorderBrush="#FF4500" BorderThickness="1">
+                <Button.ToolTip>View all tasks that need to be started</Button.ToolTip>
+                <Button.Content>
+                    <DockPanel>
+                        <Image Source=".\Resources\iconstodo.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                        <TextBlock VerticalAlignment="Center">To-Do</TextBlock>
+                    </DockPanel>
+                </Button.Content>
+            </Button>
+            <Button  Height="35" Width="150"  Background="#1E90FF" Foreground="White" 
+                    Margin="5" FontWeight="Bold" BorderBrush="#1C86EE" BorderThickness="1">
+                <Button.ToolTip>View all tasks currently in progress</Button.ToolTip>
+                <Button.Content>
+                    <DockPanel>
+                        <Image Source=".\Resources\iconsin-progress.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                        <TextBlock VerticalAlignment="Center">In Progress</TextBlock>
+                    </DockPanel>
+                </Button.Content>
+            </Button>
+            <Button  Height="35" Width="150" Background="#32CD32" Foreground="White" 
+                    Margin="5" FontWeight="Bold" BorderBrush="#2E8B57" BorderThickness="1">
+                <Button.ToolTip>View all completed tasks</Button.ToolTip>
+                <Button.Content>
+                    <DockPanel>
+                        <Image Source=".\Resources\iconstask-completed.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                        <TextBlock VerticalAlignment="Center">Completed</TextBlock>
+                    </DockPanel>
+                </Button.Content>
+            </Button>
+        </DockPanel>
+
+        <!-- Footer Panel -->
+        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="10,2" Grid.Row="3">
+            <TextBlock Text="Quick Actions" FontSize="16" FontWeight="Bold" Foreground="#555" Margin="5,10" />
+            <Button Content="Export" Height="35" Background="#4CAF50" Foreground="White" Margin="5" 
+                    FontSize="14" Padding="10,5" FontWeight="Bold" BorderBrush="#388E3C" BorderThickness="1">
+                <Button.ToolTip>Export tasks as a CSV or PDF</Button.ToolTip>
+            </Button>
+            <Button Content="Import" Height="35" Background="#4CAF50" Foreground="White" Margin="5" 
+                    FontSize="14" Padding="10,5" FontWeight="Bold" BorderBrush="#388E3C" BorderThickness="1">
+                <Button.ToolTip>Import tasks from a file</Button.ToolTip>
+            </Button>
+        </DockPanel>
+
 
     </Grid>
 </Window>

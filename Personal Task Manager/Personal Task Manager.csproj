@@ -9,4 +9,26 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\iconadd.png" />
+    <None Remove="Resources\iconsadd-32.png" />
+    <None Remove="Resources\iconsfilter.png" />
+    <None Remove="Resources\iconsin-progress.png" />
+    <None Remove="Resources\iconsmanage.png" />
+    <None Remove="Resources\iconstask-completed.png" />
+    <None Remove="Resources\iconstodo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\iconsfilter.png" />
+    <Resource Include="Resources\iconsin-progress.png" />
+    <Resource Include="Resources\iconsmanage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\iconsadd-32.png" />
+    <Resource Include="Resources\iconstask-completed.png" />
+    <Resource Include="Resources\iconstodo.png" />
+  </ItemGroup>
+
 </Project>
