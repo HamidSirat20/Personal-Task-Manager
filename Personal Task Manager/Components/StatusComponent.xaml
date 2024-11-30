@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Personal_Task_Manager.Components.StatusComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Personal_Task_Manager.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,2" >
+            <TextBlock Text="Task Status:" FontSize="16" FontWeight="Bold" Foreground="#555" Margin="10,10" />
+            <Button  Height="35" Width="180"  Background="#FF6347" Foreground="White" 
+  Margin="5" FontWeight="Bold" BorderBrush="#FF4500" BorderThickness="1">
+                <Button.ToolTip>View all tasks that need to be started</Button.ToolTip>
+                <Button.Content>
+                    <DockPanel>
+                        <Image Source="..\Resources\iconstodo.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                        <TextBlock VerticalAlignment="Center">To-Do</TextBlock>
+                    </DockPanel>
+                </Button.Content>
+            </Button>
+            <Button  Height="35" Width="180"  Background="#1E90FF" Foreground="White" 
+  Margin="5" FontWeight="Bold" BorderBrush="#1C86EE" BorderThickness="1">
+                <Button.ToolTip>View all tasks currently in progress</Button.ToolTip>
+                <Button.Content>
+                    <DockPanel>
+                        <Image Source="..\Resources\iconsin-progress.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                        <TextBlock VerticalAlignment="Center">In Progress</TextBlock>
+                    </DockPanel>
+                </Button.Content>
+            </Button>
+            <Button  Height="35" Width="180" Background="#32CD32" Foreground="White" 
+  Margin="5" FontWeight="Bold" BorderBrush="#2E8B57" BorderThickness="1">
+                <Button.ToolTip>View all completed tasks</Button.ToolTip>
+                <Button.Content>
+                    <DockPanel>
+                        <Image Source="..\Resources\iconstask-completed.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                        <TextBlock VerticalAlignment="Center">Completed</TextBlock>
+                    </DockPanel>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

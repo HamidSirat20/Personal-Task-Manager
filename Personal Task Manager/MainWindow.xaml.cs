@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using DataModel.Models;
@@ -39,9 +40,10 @@ namespace Personal_Task_Manager
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
             TasksPanel.Visibility = Visibility.Visible;
-       
+            
         }
 
-      
+       
+        
     }
 }
