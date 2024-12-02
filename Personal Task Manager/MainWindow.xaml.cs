@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using DataModel.Models;
+using Personal_Task_Manager.Components;
 using Service.TaskService;
 
 namespace Personal_Task_Manager

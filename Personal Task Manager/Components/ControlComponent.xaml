@@ -11,7 +11,7 @@
             <TextBlock Text="Actions:" FontSize="16" FontWeight="Bold" Foreground="#555" Margin="10,10,37,10" />
             <Button Height="40" Width="180"  Background="WhiteSmoke" Foreground="Black"
               Margin="5" FontSize="14" Padding="5" FontWeight="Bold" 
-              BorderBrush="#FFA500" BorderThickness="1" >       
+              BorderBrush="#FFA500" BorderThickness="1" Click="btnAdd_New_Task">       
                 <Button.ToolTip>Add a new task to your list</Button.ToolTip>
                 <Button.Content>
                     <DockPanel>

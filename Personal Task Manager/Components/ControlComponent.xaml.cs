@@ -25,5 +25,12 @@ namespace Personal_Task_Manager.Components
         {
             InitializeComponent();
         }
+
+
+        private void btnAdd_New_Task(object sender, RoutedEventArgs e)
+        {
+            AddNewTask addNewTask = new AddNewTask();
+            addNewTask.ShowDialog();
+        }
     }
 }
