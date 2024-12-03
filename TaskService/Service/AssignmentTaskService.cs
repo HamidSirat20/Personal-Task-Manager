@@ -1,49 +1,47 @@
 ﻿using DataModel.Models;
 using System.Collections.ObjectModel;
-using System.Text;
+using TaskService.Service;
 
 namespace Service.TaskService
 {
-    public class TaskService
+    public class AssignmentTaskService : IAssignmentTaskService
     {
         //private string FilePath = @"./Database/DBTask.csv";
-        public ObservableCollection<TaskItem> _taskItems = new ObservableCollection<TaskItem>();
-        public TaskService()
+        public ObservableCollection<AssignmentTask> _taskItems = new ObservableCollection<AssignmentTask>();
+
+        public AssignmentTaskService()
         {
             ReadTasks();
         }
-        private void ReadTasks()
+        void ReadTasks()
         {
-            Category daily = new Category(1,"Chores");
-            Category health = new Category(1, "Health");
-
-            TaskItem taskItem1 = new TaskItem()
+            AssignmentTask taskItem1 = new AssignmentTask()
             {
-                Id = IdGenerator(),
+                Id = GetNextId(),
                 Title = "Homework.",
                 Description = "Math Homework should be completed by tomorrow!",
-                Category = daily.TaskType,
+                Category = CategoryEnum.Education,
                 DueDate = DateTime.Now,
-                IsCompleted = false,
-                Priority = "Medium"
+                Status = Status.NotStarted,
+                Priority = Priority.High,
             };
             _taskItems.Add(taskItem1);
-            TaskItem taskItem2 = new TaskItem()
+            AssignmentTask taskItem2 = new AssignmentTask()
             {
-                Id = IdGenerator(),
+                Id = GetNextId(),
                 Title = "Visit Doctor.",
                 Description = "You have an appointment with the tooth doctor!",
-                Category = health.TaskType,
+                Category = CategoryEnum.Health,
                 DueDate = DateTime.Now,
-                IsCompleted = false,
-                Priority = "High"
+                Status = Status.Completed,
+                Priority = Priority.Medium
             };
             _taskItems.Add(taskItem2);
         }
 
-          public TaskItem DeleteTask(int id)
+        public AssignmentTask DeleteTask(int id)
         {
-            TaskItem? taskItem = _taskItems.FirstOrDefault(x=> x?.Id == id,null);
+            AssignmentTask? taskItem = _taskItems.FirstOrDefault(x => x?.Id == id, null);
             if (taskItem == null)
             {
                 return null;
@@ -55,23 +53,22 @@ namespace Service.TaskService
             }
         }
 
-        public TaskItem EditTask(int id,TaskItem taskItem)
+        public AssignmentTask EditTask(int id, AssignmentTask taskItem)
         {
-            var temp = _taskItems.FirstOrDefault(x=>x.Id ==id);
+            var temp = _taskItems.FirstOrDefault(x => x.Id == id);
             int index = _taskItems.IndexOf(temp);
-            return _taskItems[index] = taskItem;  
+            return _taskItems[index] = taskItem;
         }
 
-        public TaskItem AddTask(TaskItem taskItem)
+        public AssignmentTask AddTask(AssignmentTask taskItem)
         {
             _taskItems.Add(taskItem);
             return taskItem;
         }
-        private int IdGenerator()
+        public int GetNextId()
         {
             int generatedId = _taskItems.Any() ? _taskItems.Max(x => x.Id) + 1 : 1;
             return generatedId;
         }
-       
     }
 }

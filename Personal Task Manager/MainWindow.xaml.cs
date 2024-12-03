@@ -13,38 +13,38 @@ namespace Personal_Task_Manager
     /// </summary>
     public partial class MainWindow : Window
     {
-        TaskService taskService = new TaskService();
-        ObservableCollection<TaskItem> tasks = new ObservableCollection<TaskItem>();
-        public TaskItem CurrentTask { get; set; } = new TaskItem();
+        AssignmentTaskService taskService = new();
+        ObservableCollection<AssignmentTask> tasks = new ObservableCollection<AssignmentTask>();
+        public AssignmentTask CurrentTask { get; set; } = new AssignmentTask();
 
         public MainWindow()
         {
             InitializeComponent();
-            FillData();
-            TasksGrid.ItemsSource = tasks;
+            
+            TasksGrid.ItemsSource = taskService._taskItems;
+            ControlComponent controlComponent = new ControlComponent( taskService);
         }
 
         private void TasksGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (TasksGrid.SelectedIndex >= 0)
             {
-                CurrentTask = TasksGrid.SelectedItem as TaskItem;
+                CurrentTask = TasksGrid.SelectedItem as AssignmentTask;
                 TaskLabel.Content = CurrentTask.TaskDescription();
             }
 
         }
      
-        private void FillData()
-        {
-            tasks = taskService._taskItems;
-        }
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
             TasksPanel.Visibility = Visibility.Visible;
             
         }
 
-       
-        
+        private void btnAdd_New_Task(object sender, RoutedEventArgs e)
+        {
+            AddNewTask addNewTask = new AddNewTask(taskService);
+            addNewTask.ShowDialog();
+        }
     }
 }

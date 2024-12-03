@@ -5,14 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Personal_Task_Manager.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="600">
+             d:DesignHeight="400" d:DesignWidth="600" Width="600" Height="450">
     <Grid>
-        <StackPanel>
-            <StackPanel Orientation="Horizontal" Width="600" VerticalAlignment="Top">
+            <StackPanel>
+            <Label HorizontalAlignment="Center" FontSize="18">Add a new task</Label>
+
+            <StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Top">
                 <Label Content="Title: " 
                  HorizontalAlignment="Left" 
                  VerticalAlignment="Center" 
-                 Margin="20" 
+                 Margin="10" 
                  FontSize="14"
                  Width="100"
                  Height="30"
@@ -20,7 +22,7 @@
                 <TextBox x:Name="textTitle" 
                    HorizontalAlignment="Stretch" 
                    VerticalAlignment="Center" 
-                   Margin="20" 
+                   Margin="10" 
                    MinWidth="100"
                    FontSize="14"
                    Width="400"
@@ -28,11 +30,11 @@
                   />
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Width="600" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Top">
                 <Label Content="Description: " 
                  HorizontalAlignment="Left" 
                  VerticalAlignment="Center" 
-                 Margin="20" 
+                 Margin="10" 
                  FontSize="14"
                  Width="100"
                  Height="30"
@@ -40,7 +42,7 @@
                 <TextBox x:Name="textDescription" 
                    HorizontalAlignment="Stretch" 
                    VerticalAlignment="Center" 
-                   Margin="20" 
+                   Margin="10" 
                    MinWidth="100"
                    FontSize="14"
                    Width="400"
@@ -48,69 +50,120 @@
                   />
         </StackPanel>
 
-         <StackPanel Orientation="Horizontal" Width="600" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Top">
          <Label Content="Category: " 
-         HorizontalAlignment="Left" 
-         VerticalAlignment="Center" 
-         Margin="20" 
-         FontSize="14"
-         Width="100"
-         Height="30"
-         />
-                <TextBox x:Name="textCategory" 
-           HorizontalAlignment="Stretch" 
-           VerticalAlignment="Center" 
-           Margin="20" 
-           MinWidth="100"
-           FontSize="14"
-           Width="400"
-           Height="30"     
-          />
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Center" 
+                 Margin="10" 
+                 FontSize="14"
+                 Width="100"
+                 Height="30"
+                 />
+                <ComboBox  
+                Name="comboBoxCategory"    
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Bottom" 
+                Margin="10" 
+                MinWidth="100"
+                Width="400"
+                Height="30">
+                    <ComboBoxItem Content="Work"  Margin="0,0,10,0" />
+                    <ComboBoxItem Content="Personal"  Margin="0,0,10,0" />
+                    <ComboBoxItem Content="Health"  />
+                    <ComboBoxItem Content="Shopping"  />
+                    <ComboBoxItem Content="Finance"  />
+                    <ComboBoxItem Content="Home"  />
+                    <ComboBoxItem Content="Education"  />
+                    <ComboBoxItem Content="Social"  />
+                    <ComboBoxItem Content="Miscellaneous"  />
+                </ComboBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Width="600" VerticalAlignment="Top">
-                <Label Content="Category: " 
+            <StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Top">
+                <Label Content="Deadline:: " 
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Center" 
-                Margin="20" 
+                Margin="10" 
                 FontSize="14"
                 Width="100"
                 Height="30"
                 />
                 <DatePicker x:Name="datePicker" HorizontalAlignment="Stretch" 
                 VerticalAlignment="Center" 
-                Margin="20" 
+                Margin="10" 
                 MinWidth="100"
                 FontSize="14"
                 Width="400"
                 Height="30"  />
         </StackPanel>
-            <StackPanel Orientation="Horizontal" Width="600" VerticalAlignment="Top">
+           
+            <StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Top">
+                <Label Content="Status: " 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Center" 
+                        Margin="10" 
+                        FontSize="14"
+                        Width="100"
+                        Height="30"
+                        />
+                <ComboBox  
+                        Name="comboBoxStatus"    
+                    HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Bottom" 
+                        Margin="10" 
+                        MinWidth="100"
+                        Width="400"
+                        Height="30">        
+                    <ComboBoxItem Content="NotStarted"  Margin="0,0,10,0" />
+                    <ComboBoxItem Content="InProgress"  Margin="0,0,10,0" />
+                    <ComboBoxItem Content="Completed"  />
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Top">
                 <Label Content="Priority: " 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Center" 
-                Margin="20" 
-                FontSize="14"
-                Width="100"
-                Height="30"
-                />
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" 
-                VerticalAlignment="Center" 
-                Margin="20" 
-                MinWidth="100"
-                Width="400"
-                Height="30">
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Center" 
+                 Margin="10" 
+                 FontSize="14"
+                 Width="100"
+                 Height="30"
+                 />
+                <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" 
+                     VerticalAlignment="Bottom" 
+                     Margin="10" 
+                     MinWidth="100"
+                     Width="auto"
+                     Height="30" Name="priorityRadioBtnName">
                     <RadioButton Content="Low" GroupName="PriorityGroup" Margin="0,0,10,0" />
                     <RadioButton Content="Medium" GroupName="PriorityGroup" Margin="0,0,10,0" />
                     <RadioButton Content="High" GroupName="PriorityGroup" />
-                </StackPanel>
+                </StackPanel>-->
+                <ComboBox  
+                    Name="comboBoxPriority"    
+                HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Bottom" 
+                    Margin="10" 
+                    MinWidth="100"
+                    Width="400"
+                    Height="30">
+                    <ComboBoxItem Content="Low"  Margin="0,0,10,0" />
+                    <ComboBoxItem Content="Medium"  Margin="0,0,10,0" />
+                    <ComboBoxItem Content="High"  />
+                </ComboBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal"  
-                VerticalAlignment="Center" 
-                MinWidth="200"
-                Width="400">
-                <Button Content="Cancel" Width="100" Margin="10" Click="Button_Click" Background="Red" />
-                <Button Content="Save" Width="100" Margin="10" Click="Button_Click_1" Background="Green"/>
+
+            <StackPanel Orientation="Horizontal" Width="600">
+                <Grid Width="600">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Cancel" Width="100" Height="40" Margin="80 10" Background="Red" Click="btnCancel_Click" Grid.Column="0" HorizontalAlignment="Left" />
+                    <Button Content="Save" Width="100" Height="40" Margin="80 10"  Background="Green" Click="btnSave_Click" Grid.Column="2" HorizontalAlignment="Right"/>
+                </Grid>
             </StackPanel>
+
         </StackPanel>
     </Grid>
 </Window>

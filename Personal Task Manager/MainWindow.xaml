@@ -17,8 +17,45 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <!-- Top Action Buttons -->
-            <components:ControlComponent  Grid.Row="0"/>
+            <!--<components:ControlComponent  Grid.Row="0" x:Name="controlContext"/>-->
 
+
+            <StackPanel Grid.Row="0" >
+                <TextBlock Text="Actions:" FontSize="16" FontWeight="Bold" Foreground="#555" Margin="10,10,37,10" />
+                <Button Height="40" Width="180"  Background="WhiteSmoke" Foreground="Black"
+            Margin="5" FontSize="14" Padding="5" FontWeight="Bold" 
+            BorderBrush="#FFA500" BorderThickness="1" Click="btnAdd_New_Task">
+                    <Button.ToolTip>Add a new task to your list</Button.ToolTip>
+                    <Button.Content>
+                        <DockPanel>
+                            <Image Source=".\Resources\iconsadd-32.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                            <TextBlock VerticalAlignment="Center">Add Task</TextBlock>
+                        </DockPanel>
+                    </Button.Content>
+                </Button>
+                <Button  Height="40" Width="180"  Background="WhiteSmoke" Foreground="Black"
+                    Margin="5" FontSize="14" Padding="5" FontWeight="Bold" 
+                    BorderBrush="#FFA500" BorderThickness="1">
+                    <Button.ToolTip>Organize and manage task categories</Button.ToolTip>
+                    <Button.Content>
+                        <DockPanel>
+                            <Image Source=".\Resources\iconsmanage.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                            <TextBlock VerticalAlignment="Center">Manage Categories</TextBlock>
+                        </DockPanel>
+                    </Button.Content>
+                </Button>
+                <Button  Height="40" Width="180"   Background="WhiteSmoke" Foreground="Black"
+Margin="5" FontSize="14" Padding="5" FontWeight="Bold" 
+BorderBrush="#FFA500" BorderThickness="1">
+                    <Button.ToolTip>Filter tasks by status or category</Button.ToolTip>
+                    <Button.Content>
+                        <DockPanel>
+                            <Image Source=".\Resources\iconsfilter.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                            <TextBlock VerticalAlignment="Center">Filter Tasks</TextBlock>
+                        </DockPanel>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
             <!-- Status Buttons -->
             <components:StatusComponent Grid.Row="1" />
         </Grid>
