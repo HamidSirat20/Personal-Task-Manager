@@ -50,7 +50,7 @@
                   />
         </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Top">
+            <!--<StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Top">
          <Label Content="Category: " 
                  HorizontalAlignment="Left" 
                  VerticalAlignment="Center" 
@@ -77,7 +77,29 @@
                     <ComboBoxItem Content="Social"  />
                     <ComboBoxItem Content="Miscellaneous"  />
                 </ComboBox>
+            </StackPanel>-->
+            <StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Top">
+                <Label Content="Category: " 
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Center" 
+                   Margin="10" 
+                   FontSize="14"
+                   Width="100"
+                   Height="30" />
+                <ComboBox  
+                Name="comboBoxCategory"    
+                HorizontalAlignment="Stretch" 
+                VerticalAlignment="Bottom" 
+                Margin="10" 
+                MinWidth="100"
+                Width="400"
+                Height="30"
+                ItemsSource="{Binding Categories}" 
+                DisplayMemberPath="TaskType"
+                SelectedValuePath="Id">
+                </ComboBox>
             </StackPanel>
+
             <StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Top">
                 <Label Content="Deadline:: " 
                 HorizontalAlignment="Left" 

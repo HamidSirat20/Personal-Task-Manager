@@ -30,7 +30,7 @@
                 </Button.Content>
             </Button>
             <Button  Height="35" Width="180" Background="#32CD32" Foreground="White" 
-  Margin="5" FontWeight="Bold" BorderBrush="#2E8B57" BorderThickness="1">
+                Margin="5" FontWeight="Bold" BorderBrush="#2E8B57" BorderThickness="1">
                 <Button.ToolTip>View all completed tasks</Button.ToolTip>
                 <Button.Content>
                     <DockPanel>

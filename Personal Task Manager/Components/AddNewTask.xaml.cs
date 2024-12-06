@@ -11,12 +11,15 @@ namespace Personal_Task_Manager.Components
     /// </summary>
     public partial class AddNewTask : Window
     {
-        private readonly IAssignmentTaskService _taskService;
-        public AddNewTask(IAssignmentTaskService assignment)
+        private readonly AssignmentTaskService _taskService;
+        private readonly CategoryService _categoryService;
+        public AddNewTask(AssignmentTaskService assignment, CategoryService category)
         {
             InitializeComponent();
            
             _taskService = assignment;
+            _categoryService = category;
+            comboBoxCategory.ItemsSource = _categoryService._categories;
         }
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {

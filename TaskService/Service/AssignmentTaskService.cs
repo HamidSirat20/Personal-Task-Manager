@@ -4,7 +4,7 @@ using TaskService.Service;
 
 namespace Service.TaskService
 {
-    public class AssignmentTaskService : IAssignmentTaskService
+    public class AssignmentTaskService 
     {
         //private string FilePath = @"./Database/DBTask.csv";
         public ObservableCollection<AssignmentTask> _taskItems = new ObservableCollection<AssignmentTask>();

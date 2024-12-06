@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using Service.TaskService;
+using System.Windows;
 using System.Windows.Controls;
-using TaskService.Service;
 
 namespace Personal_Task_Manager.Components
 {
@@ -9,7 +9,7 @@ namespace Personal_Task_Manager.Components
     /// </summary>
     public partial class ControlComponent : UserControl
     {
-        private readonly IAssignmentTaskService _taskService;
+        private readonly AssignmentTaskService _taskService;
 
         // Default parameterless constructor
         public ControlComponent()
@@ -18,15 +18,14 @@ namespace Personal_Task_Manager.Components
         }
 
         // Constructor with dependency injection
-        public ControlComponent(IAssignmentTaskService taskService) : this()
+        public ControlComponent(AssignmentTaskService taskService) : this()
         {
             _taskService = taskService;
         }
 
         private void btnAdd_New_Task(object sender, RoutedEventArgs e)
         {
-            AddNewTask addNewTask = new AddNewTask(_taskService);
-            addNewTask.ShowDialog();
+            
         }
     }
 }
