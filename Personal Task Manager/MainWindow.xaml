@@ -19,7 +19,7 @@
             <!-- Top Action Buttons -->
 
             <StackPanel Grid.Row="0" >
-                <TextBlock Text="Actions:" FontSize="16" FontWeight="Bold" Foreground="#555" Margin="10,10,37,10" />
+                <TextBlock Text="Actions:" FontSize="16" FontWeight="Bold" Foreground="#555" Margin="10,25,37,10" />
                 <Button Height="40" Width="180"  Background="WhiteSmoke" Foreground="Black"
             Margin="5" FontSize="14" Padding="5" FontWeight="Bold" 
             BorderBrush="#FFA500" BorderThickness="1" Click="btnAdd_New_Task">
@@ -45,7 +45,56 @@
             </StackPanel>
             
             <!-- Status Buttons -->
-            <components:StatusComponent Grid.Row="1" />
+            <!--<components:StatusComponent Grid.Row="1" />-->
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,2" Grid.Row="1">
+                <TextBlock Text="Task Status:" FontSize="16" FontWeight="Bold" Foreground="#555" Margin="10,10" />
+                <Button  Height="35" Width="180"  Background="#FF6347" Foreground="White" 
+              Name="btn_toDo" Click="btn_toDo_Click"
+              Margin="5" FontWeight="Bold" BorderBrush="#FF4500" BorderThickness="1">
+                    <Button.ToolTip>View all tasks that need to be started</Button.ToolTip>
+                    <Button.Content>
+                        <DockPanel>
+                            <Image Source=".\Resources\iconstodo.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                            <TextBlock VerticalAlignment="Center">To-Do</TextBlock>
+                        </DockPanel>
+                    </Button.Content>
+                </Button>
+                <Button  Height="35" Width="180"  Background="#1E90FF" Foreground="White" 
+          Name="btn_InProgress"    Click="btn_InProgress_Click"
+          Margin="5" FontWeight="Bold" BorderBrush="#1C86EE" BorderThickness="1">
+                    <Button.ToolTip>View all tasks currently in progress</Button.ToolTip>
+                    <Button.Content>
+                        <DockPanel>
+                            <Image Source=".\Resources\iconsin-progress.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                            <TextBlock VerticalAlignment="Center">In Progress</TextBlock>
+                        </DockPanel>
+                    </Button.Content>
+                </Button>
+                <Button  Height="35" Width="180" Background="#32CD32" Foreground="White" 
+          Name="btn_Completed" Click="btn_Completed_Click"      
+          Margin="5" FontWeight="Bold" BorderBrush="#2E8B57" BorderThickness="1">
+                    <Button.ToolTip>View all completed tasks</Button.ToolTip>
+                    <Button.Content>
+                        <DockPanel>
+                            <Image Source=".\Resources\iconstask-completed.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                            <TextBlock VerticalAlignment="Center">Completed</TextBlock>
+                        </DockPanel>
+                    </Button.Content>
+                </Button>
+
+                <Button  Height="35" Width="180" Background="AliceBlue" Foreground="Black" 
+          Name="btn_showAll" Click="btn_showAll_Click"
+          Margin="5" FontWeight="Bold" BorderBrush="#2E8B57" BorderThickness="1">
+                    <Button.ToolTip>View all completed tasks</Button.ToolTip>
+                    <Button.Content>
+                        <DockPanel>
+                            <Image Source=".\Resources\all.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                            <TextBlock VerticalAlignment="Center">Show All</TextBlock>
+                        </DockPanel>
+                    </Button.Content>
+
+                </Button>
+            </StackPanel>
         </Grid>
         
         <!--Second column-->
@@ -86,6 +135,21 @@
                 <StatusBar Background="White">
                     <StatusBarItem FontSize="16" Content="© 2024 Hamid. All rights reserved." />
                 </StatusBar>
+
+                <!--<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,2" >
+                    <TextBlock Text="Task Status:" FontSize="16" FontWeight="Bold" Foreground="#555" Margin="10,10" />
+                    <Button  Height="35" Width="180"  Background="#FF6347" Foreground="White" 
+              Name="btn_toDo" Click="btn_toDo_Click"
+              Margin="5" FontWeight="Bold" BorderBrush="#FF4500" BorderThickness="1">
+                        <Button.ToolTip>View all tasks that need to be started</Button.ToolTip>
+                        <Button.Content>
+                            <DockPanel>
+                                <Image Source=".\Resources\iconstodo.png" Margin="0,0,10,0" VerticalAlignment="Center"></Image>
+                                <TextBlock VerticalAlignment="Center">To-Do</TextBlock>
+                            </DockPanel>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>-->
             </DockPanel>
         </Grid>
     </Grid>
