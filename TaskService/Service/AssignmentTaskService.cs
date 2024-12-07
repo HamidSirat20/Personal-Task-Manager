@@ -8,10 +8,20 @@ namespace Service.TaskService
     {
         //private string FilePath = @"./Database/DBTask.csv";
         public ObservableCollection<AssignmentTask> _taskItems = new ObservableCollection<AssignmentTask>();
-
-        public AssignmentTaskService()
+        private static AssignmentTaskService _instance;
+        private AssignmentTaskService()
         {
             ReadTasks();
+        }
+        public static AssignmentTaskService Instance 
+        { get
+            {
+                if(_instance == null)
+                {
+                    _instance = new AssignmentTaskService();
+                }
+                return _instance;
+            } 
         }
         void ReadTasks()
         {

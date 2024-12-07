@@ -14,7 +14,7 @@ namespace Personal_Task_Manager
     /// </summary>
     public partial class MainWindow : Window
     {
-        AssignmentTaskService taskService = new();
+        AssignmentTaskService taskService = AssignmentTaskService.Instance;
         ObservableCollection<AssignmentTask> tasks = new ();
 
         CategoryService categoryService = new();
