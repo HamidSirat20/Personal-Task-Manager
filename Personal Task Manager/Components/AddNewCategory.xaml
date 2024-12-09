@@ -37,9 +37,21 @@
                   Height="30"   
               />
                 </StackPanel>
-                
-                
-            </StackPanel>
+
+                <StackPanel Grid.Row="0">
+
+                    <TextBlock x:Name="categoryMessageBox"  
+                                HorizontalAlignment="Right"
+                                 MinWidth="100"
+                                 FontSize="10"
+                                 Margin="50,20"
+                                 Height="20" 
+                                 Foreground="Red">
+                    </TextBlock>       
+                </StackPanel>
+
+
+                </StackPanel>
             <StackPanel HorizontalAlignment="Stretch" Grid.Row="1">
 
                 <StackPanel>

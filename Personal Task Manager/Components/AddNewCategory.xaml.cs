@@ -1,6 +1,8 @@
 ﻿using DataModel.Models;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using TaskService.Service;
 
 namespace Personal_Task_Manager.Components
@@ -41,30 +43,47 @@ namespace Personal_Task_Manager.Components
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            TaskCategory newCategory = new()
+            
+
+            bool isValid = true;
+            isValid = CheckValidity();
+            if (isValid)
             {
-                Id = _categoryService.GetNextId(),
-                TaskType = textNewCategory.Text,
-            };
-            _categoryService.AddCategory(newCategory);
-            ////MessageBox.Show(_categoryService.PrintCategory());
-            this.Close();
-
-        }
-
-        private void btnEdit_Click(object sender, RoutedEventArgs e)
-        {
-            if (CategoryGrid.SelectedIndex >= 0)
-
-            {
-                CurrentCategory = CategoryGrid.SelectedItem as TaskCategory;
-              
+                TaskCategory newCategory = new()
+                {
+                    Id = _categoryService.GetNextId(),
+                    TaskType = textNewCategory.Text,
+                };
+                _categoryService.AddCategory(newCategory);
+                ////MessageBox.Show(_categoryService.PrintCategory());
+                this.Close();
             }
+
         }
 
+        private bool CheckValidity()
+        {
+            bool isValid = true;
+            string TaskType = textNewCategory.Text.Trim().ToLower();
+
+            if (string.IsNullOrEmpty(TaskType))
+            {
+                isValid = false;
+                categoryMessageBox.Text = "Please write new category.";
+                textNewCategory.BorderBrush = Brushes.Red;
+            }
+            else if (_categoryService._categories.FirstOrDefault(x=>x.TaskType.ToLower() ==TaskType) !=null)
+            {
+                isValid = false;
+                categoryMessageBox.Text = "This category already exist!";
+                textNewCategory.BorderBrush = Brushes.Red;
+            }
+          
+            return isValid;
+        }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (CategoryGrid.SelectedIndex >= 0)
+           if (CategoryGrid.SelectedIndex >= 0)
             {
                 CurrentCategory = CategoryGrid.SelectedItem as TaskCategory;
                 _categoryService.DeleteCategory(CurrentCategory.Id);

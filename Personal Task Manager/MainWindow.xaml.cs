@@ -63,6 +63,14 @@ namespace Personal_Task_Manager
              addNewCategory.ShowDialog();     
         }
 
+        private void btn_showAll_Click(object sender, RoutedEventArgs e)
+        {
+            isToDo = false;
+            isInProgress = false;
+            isCompleted = false;
+            isShowAll = true;
+            UpdateTaskGrid();
+        }
         private void btn_toDo_Click(object sender, RoutedEventArgs e)
         {
             isToDo = true;
@@ -87,15 +95,6 @@ namespace Personal_Task_Manager
             isInProgress = false;
             isCompleted = true;
             isShowAll = false;
-            UpdateTaskGrid();
-        }
-
-        private void btn_showAll_Click(object sender, RoutedEventArgs e)
-        {
-            isToDo = false;
-            isInProgress = false;
-            isCompleted = false;
-            isShowAll = true;
             UpdateTaskGrid();
         }
 

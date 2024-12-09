@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Personal_Task_Manager.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="600" Width="600" Height="450">
+             d:DesignHeight="400" d:DesignWidth="600" Width="600" Height="480">
     <Grid>
             <StackPanel>
             <Label HorizontalAlignment="Center" FontSize="18">Add a new task</Label>
@@ -18,7 +18,7 @@
                  FontSize="14"
                  Width="100"
                  Height="30"
-                 /> 
+                 />
                 <TextBox x:Name="textTitle" 
                    HorizontalAlignment="Stretch" 
                    VerticalAlignment="Center" 
@@ -48,36 +48,7 @@
                    Width="400"
                    Height="30"    
                   />
-        </StackPanel>
-
-            <!--<StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Top">
-         <Label Content="Category: " 
-                 HorizontalAlignment="Left" 
-                 VerticalAlignment="Center" 
-                 Margin="10" 
-                 FontSize="14"
-                 Width="100"
-                 Height="30"
-                 />
-                <ComboBox  
-                Name="comboBoxCategory"    
-                HorizontalAlignment="Stretch" 
-                VerticalAlignment="Bottom" 
-                Margin="10" 
-                MinWidth="100"
-                Width="400"
-                Height="30">
-                    <ComboBoxItem Content="Work"  Margin="0,0,10,0" />
-                    <ComboBoxItem Content="Personal"  Margin="0,0,10,0" />
-                    <ComboBoxItem Content="Health"  />
-                    <ComboBoxItem Content="Shopping"  />
-                    <ComboBoxItem Content="Finance"  />
-                    <ComboBoxItem Content="Home"  />
-                    <ComboBoxItem Content="Education"  />
-                    <ComboBoxItem Content="Social"  />
-                    <ComboBoxItem Content="Miscellaneous"  />
-                </ComboBox>
-            </StackPanel>-->
+            </StackPanel>
             <StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Top">
                 <Label Content="Category: " 
                    HorizontalAlignment="Left" 
@@ -150,16 +121,7 @@
                  Width="100"
                  Height="30"
                  />
-                <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" 
-                     VerticalAlignment="Bottom" 
-                     Margin="10" 
-                     MinWidth="100"
-                     Width="auto"
-                     Height="30" Name="priorityRadioBtnName">
-                    <RadioButton Content="Low" GroupName="PriorityGroup" Margin="0,0,10,0" />
-                    <RadioButton Content="Medium" GroupName="PriorityGroup" Margin="0,0,10,0" />
-                    <RadioButton Content="High" GroupName="PriorityGroup" />
-                </StackPanel>-->
+
                 <ComboBox  
                     Name="comboBoxPriority"    
                 HorizontalAlignment="Stretch" 
@@ -172,6 +134,15 @@
                     <ComboBoxItem Content="Medium"  Margin="0,0,10,0" />
                     <ComboBoxItem Content="High"  />
                 </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Top">
+                <TextBlock x:Name="textMessageBox" Foreground="Red" HorizontalAlignment="Stretch" 
+                            VerticalAlignment="Bottom" 
+                            Margin="10" 
+                            MinWidth="100"
+                            Width="400"
+                            Height="30"
+                           ></TextBlock>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Width="600">
