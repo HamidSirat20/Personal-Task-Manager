@@ -104,7 +104,7 @@ namespace Personal_Task_Manager
 
             if (isToDo)
             {
-                TasksGrid.ItemsSource = tasks.Where(x => x.Status == Status.NotStarted).ToList();
+                TasksGrid.ItemsSource = tasks.Where(x => x.Status == Status.Pending).ToList();
             }
 
             else if (isInProgress)

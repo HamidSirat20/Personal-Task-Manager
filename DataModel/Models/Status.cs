@@ -1,8 +1,8 @@
 ﻿namespace DataModel.Models
 {
     public enum Status
-    {   
-        NotStarted,
+    {
+        Pending,
         InProgress,
         Completed
     }

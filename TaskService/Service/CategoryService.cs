@@ -6,6 +6,9 @@ namespace TaskService.Service
 {
     public class CategoryService 
     {
+        private string path1 = @"F:\Integrify-Post-Training\WPF Project\Personal Task Manager\TaskService\Service\Database\DBCategory.csv";
+
+
         public ObservableCollection<TaskCategory> _categories = new();
 
         public CategoryService()
@@ -14,24 +17,37 @@ namespace TaskService.Service
         }
         public void ReadCategory()
         {
-            var category = new TaskCategory()
+            using (StreamReader reader = new StreamReader(path1))
             {
-                Id = GetNextId(),
-                TaskType = "Health"
-            };
-            _categories.Add(category);
-            var category1 = new TaskCategory()
+                _categories.Clear();
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    string[] values = line.Split(';');
+
+                    TaskCategory category = new()
+                    {
+                        Id = Convert.ToInt16(values[0]),
+                        TaskType = values[1],
+                    };
+
+                    _categories.Add(category);
+                }
+            }
+        }
+        private void SaveCategory()
+        {
+            using (StreamWriter writer = new(path1))
             {
-                Id = GetNextId(),
-                TaskType = "Work"
-            };
-            _categories.Add(category1);
-            var category2 = new TaskCategory()
-            {
-                Id = GetNextId(),
-                TaskType = "Education"
-            };
-            _categories.Add(category2);
+                foreach (TaskCategory item in _categories)
+                {
+
+                    string Id = item.Id.ToString();
+                    string taskType = item.TaskType.ToString();
+                    string line = string.Format("{0};{1}",Id, taskType);
+                    writer.WriteLine(line);
+                }
+            }
         }
         public string PrintCategory()
         {
@@ -40,11 +56,13 @@ namespace TaskService.Service
             {
                 sb.Append(category.TaskType+" ");
             }
+            SaveCategory();
             return sb.ToString();
         }
         public TaskCategory AddCategory(TaskCategory category)
         {
             _categories.Add(category);
+            SaveCategory();
             return category;
         }
 
@@ -55,6 +73,7 @@ namespace TaskService.Service
             {
                 _categories.Remove(foundCategory);
             }
+            SaveCategory();
             return foundCategory;
         }
 
@@ -62,6 +81,7 @@ namespace TaskService.Service
         {
             var temp = _categories.FirstOrDefault(x => x.Id == id);
             int index = _categories.IndexOf(temp);
+            SaveCategory();
             return _categories[index] = category;
         }
 

@@ -6,8 +6,10 @@ namespace Service.TaskService
 {
     public class AssignmentTaskService 
     {
-        //private string FilePath = @"./Database/DBTask.csv";
-        public ObservableCollection<AssignmentTask> _taskItems = new ObservableCollection<AssignmentTask>();
+        private string path1 = @"F:\Integrify-Post-Training\WPF Project\Personal Task Manager\TaskService\Service\Database\DBAssignmentTask.csv";
+
+        public ObservableCollection<AssignmentTask> _taskItems = new ();
+        public ObservableCollection<TaskCategory> _categories = new ();
         private static AssignmentTaskService _instance;
         private AssignmentTaskService()
         {
@@ -25,28 +27,53 @@ namespace Service.TaskService
         }
         void ReadTasks()
         {
-            AssignmentTask taskItem1 = new AssignmentTask()
+            using (StreamReader reader = new StreamReader(path1))
             {
-                Id = GetNextId(),
-                Title = "Homework.",
-                Description = "Math Homework should be completed by tomorrow!",
-                Category = CategoryEnum.Education,
-                DueDate = DateTime.Now,
-                Status = Status.NotStarted,
-                Priority = Priority.High,
-            };
-            _taskItems.Add(taskItem1);
-            AssignmentTask taskItem2 = new AssignmentTask()
-            {
-                Id = GetNextId(),
-                Title = "Visit Doctor.",
-                Description = "You have an appointment with the tooth doctor!",
-                Category = CategoryEnum.Health,
-                DueDate = DateTime.Now,
-                Status = Status.Completed,
-                Priority = Priority.Medium
-            };
-            _taskItems.Add(taskItem2);
+                _taskItems.Clear();
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    string[] values = line.Split(';');
+                    Enum.TryParse(values[3], out CategoryEnum cat);
+                    DateTime.TryParse(values[4], out DateTime date);
+                    Enum.TryParse(values[5], out Status status);
+                    Enum.TryParse(values[6], out Priority priority);
+
+
+                    AssignmentTask task = new AssignmentTask()
+                    {
+                        Id = Convert.ToInt16(values[0]),
+                        Title = values[1],
+                        Description = values[2],
+                        Category = cat,
+                        DueDate = date,
+                        Status = status,
+                        Priority = priority,
+                    };  
+                    _taskItems.Add(task);
+
+                }
+            }
+        }
+
+        private void SaveTasks()
+        {
+            using (StreamWriter writer = new (path1))
+            {    
+                foreach (AssignmentTask item in _taskItems)
+                {
+
+                    string Id = item.Id.ToString();
+                    string Title = item.Title.ToString();
+                    string Description = item.Description.ToString();
+                    string Category = item.Category.ToString();
+                    string DueDate = item.DueDate.ToString();
+                    string Status = item.Status.ToString();
+                    string Priority = item.Priority.ToString();
+                    string line = string.Format("{0};{1};{2};{3};{4};{5};{6}", Id, Title, Description, Category, DueDate, Status, Priority);
+                    writer.WriteLine(line);
+                }
+            }
         }
 
         public AssignmentTask DeleteTask(int id)
@@ -59,6 +86,7 @@ namespace Service.TaskService
             else
             {
                 _taskItems.Remove(taskItem);
+                SaveTasks();
                 return taskItem;
             }
         }
@@ -67,12 +95,14 @@ namespace Service.TaskService
         {
             var temp = _taskItems.FirstOrDefault(x => x.Id == id);
             int index = _taskItems.IndexOf(temp);
+            SaveTasks();
             return _taskItems[index] = taskItem;
         }
 
         public AssignmentTask AddTask(AssignmentTask taskItem)
         {
             _taskItems.Add(taskItem);
+            SaveTasks();
             return taskItem;
         }
         public int GetNextId()

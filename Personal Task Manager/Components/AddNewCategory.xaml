@@ -8,71 +8,48 @@
              d:DesignHeight="400" d:DesignWidth="600" Width="600" Height="400">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+
         <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="220"></RowDefinition>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0">
-                <Label HorizontalAlignment="Center" FontSize="18" Margin="20">Add a new category</Label>
+            <StackPanel>
+                <Label HorizontalAlignment="Center" FontSize="18" Margin="2">Add a new category</Label>
 
-                <StackPanel Orientation="Horizontal" Width="auto" VerticalAlignment="Top">
+                <StackPanel Orientation="Vertical" Width="auto" VerticalAlignment="Top">
                     <Label Content="Category: " 
-                     HorizontalAlignment="Left" 
-                     VerticalAlignment="Center" 
-                     Margin="10 0 0 0" 
-                     FontSize="14"
-                     Width="100"
-                     Height="30"
-                     />
+                              HorizontalAlignment="Left" 
+                              VerticalAlignment="Center" 
+                              Margin="12 0 0 0"         
+                              FontSize="14"
+                              Width="160"
+                              Height="30"
+                      />
                     <TextBox x:Name="textNewCategory"  Text="{Binding SelectedCategory.Name, Mode=TwoWay}" 
-                   HorizontalAlignment="Stretch" 
-                   VerticalAlignment="Center" 
-                   MinWidth="100"
-                   FontSize="14"
-                   Width="160"
-                  Height="30"   
-              />
-                </StackPanel>
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            MinWidth="160"
+                            FontSize="10"
+                            Width="160"
+                            Height="30"   
+                    />
+                     </StackPanel>
 
-                <StackPanel Grid.Row="0">
+                <TextBlock x:Name="categoryMessageBox"  
+                            HorizontalAlignment="Center"
+                            Width="auto"
+                            FontSize="10"
+                            Margin="12,20"
+                            Height="auto" 
+                            Foreground="Red"
+                           TextWrapping="Wrap" 
+                           >
 
-                    <TextBlock x:Name="categoryMessageBox"  
-                                HorizontalAlignment="Right"
-                                 MinWidth="100"
-                                 FontSize="10"
-                                 Margin="50,20"
-                                 Height="20" 
-                                 Foreground="Red">
-                    </TextBlock>       
-                </StackPanel>
-
-
-                </StackPanel>
-            <StackPanel HorizontalAlignment="Stretch" Grid.Row="1">
-
+                </TextBlock>
                 <StackPanel>
-                    <StackPanel Orientation="Horizontal" Width="300" Margin="0 40">
-                        <Grid Width="300">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Button Content="Cancel" Width="100" Height="40" Margin=" 10" Background="Yellow" Click="btnCancel_Click" Grid.Column="0" HorizontalAlignment="Left" />
-                            <Button Content="Save" Width="100" Height="40" Margin="10"  Background="GreenYellow" Click="btnSave_Click" Grid.Column="2" HorizontalAlignment="Right"/>
-                        </Grid>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Width="300">
-                        <Grid Width="300">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Button Content="Delete" Width="100" Height="40" Margin="10"  Background="OrangeRed" Click="btnDelete_Click" Grid.Column="2" HorizontalAlignment="Center"/>
-                        </Grid>
-                    </StackPanel>
+                    <Button Content="Save" Width="150" Height="40" Margin="10"  Background="GreenYellow" Click="btnSave_Click" Grid.Column="2" HorizontalAlignment="Center"/>
+                    <Button Content="Cancel" Width="150" Height="40" Margin=" 10" Background="Yellow" Click="btnCancel_Click" Grid.Column="0" HorizontalAlignment="Center" />
+                    <Button Content="Delete" Width="150" Height="40" Margin="10"  Background="OrangeRed" Click="btnDelete_Click" Grid.Column="2" HorizontalAlignment="Center"/>
                 </StackPanel>
             </StackPanel>
 

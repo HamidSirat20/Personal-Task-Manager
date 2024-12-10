@@ -69,7 +69,7 @@ namespace Personal_Task_Manager.Components
             if (string.IsNullOrEmpty(TaskType))
             {
                 isValid = false;
-                categoryMessageBox.Text = "Please write new category.";
+                categoryMessageBox.Text = "Please write a new category.";
                 textNewCategory.BorderBrush = Brushes.Red;
             }
             else if (_categoryService._categories.FirstOrDefault(x=>x.TaskType.ToLower() ==TaskType) !=null)
@@ -83,7 +83,11 @@ namespace Personal_Task_Manager.Components
         }
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-           if (CategoryGrid.SelectedIndex >= 0)
+            if (CategoryGrid.SelectedIndex < 0)
+            {
+                categoryMessageBox.Text = "Please choose a category from the left to delete.";
+            }
+            else if (CategoryGrid.SelectedIndex >= 0)
             {
                 CurrentCategory = CategoryGrid.SelectedItem as TaskCategory;
                 _categoryService.DeleteCategory(CurrentCategory.Id);
