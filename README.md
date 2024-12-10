@@ -4,6 +4,8 @@
 The **Personal Task Manager** is a simple and efficient desktop application for managing daily tasks. It enables users to add, organize, and prioritize tasks with an easy-to-use interface.
 
 ![image](https://github.com/user-attachments/assets/088863a0-4671-4a42-9e33-116e62fffc41)
+
+![image](https://github.com/user-attachments/assets/086e3da2-b0d2-4f9b-8a3c-c902b1b3f33d)
 ---
 
 ## Features
